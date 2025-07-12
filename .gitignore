@@ -1,4 +1,5 @@
 CLAUDE.md
-logs/**
-target/*
-.venv/*
+logs/
+target/
+.venv/
+__pycache__/

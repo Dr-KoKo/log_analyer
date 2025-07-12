@@ -5,17 +5,20 @@ A sophisticated log analysis system with pluggable data sources and advanced vis
 ## Features
 
 ### 🔌 Pluggable Architecture
+
 - **Multiple Data Sources**: Easily switch between file-based logs and Elasticsearch/ELK stack
 - **Extensible Design**: Add new data sources by implementing the `LogSourceInterface`
 - **Future-ready**: Prepared for database integrations like ELK
 
 ### 📊 Advanced Analytics
+
 - **Time-series Analysis**: Track error trends over time
 - **Pattern Detection**: Automatically detect error bursts and repeating patterns
 - **Multi-dimensional Grouping**: Analyze by location, time, thread, and exception type
 - **Statistical Metrics**: Error rates, peak hours, distribution analysis
 
 ### 📈 Rich Visualizations
+
 - **Interactive Dashboard**: Built with Streamlit and Plotly
 - **Multiple Views**: Overview, time analysis, hotspots, patterns, and raw data
 - **Real-time Updates**: Auto-refresh capability for monitoring
@@ -83,6 +86,7 @@ class LogSourceInterface(ABC):
 ## Supported Log Format
 
 Currently optimized for Apache Tomcat logs in Korean with format:
+
 ```
 DD-Mon-YYYY HH:MM:SS.mmm 레벨 [thread] logger message
 ```
@@ -96,12 +100,13 @@ To add a new data source:
 3. Add the source option to the CLI and dashboard
 
 Example:
+
 ```python
 class MongoDBLogSource(LogSourceInterface):
     def connect(self, connection_string: str, **kwargs):
         # Connect to MongoDB
         pass
-    
+
     def fetch_logs(self, start_time, end_time, filters):
         # Query and return logs
         pass
