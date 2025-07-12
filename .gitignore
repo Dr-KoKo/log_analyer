@@ -1,4 +1,4 @@
 CLAUDE.md
-./logs/*
-./target/*
-./.venv/*
+logs/**
+target/*
+.venv/*
