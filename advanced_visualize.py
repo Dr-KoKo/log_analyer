@@ -82,9 +82,15 @@ with st.sidebar:
 if source_type == "Demo Data" or (source_type == "File/ZIP" and uploaded_file):
     # Load data
     if source_type == "Demo Data":
-        # Use existing log files for demo
+        # Use default zip file if available
         source = FileLogSource()
-        source.connect("/mnt/c/Users/dongh/OneDrive/문서/workspace/log_analyer/logs/localhost.2025-06-10.log")
+        import os
+        default_zip_path = "demo_logs.zip"  # This file should be in your repo
+        if os.path.exists(default_zip_path):
+            source.connect(default_zip_path)
+            st.info("📁 Using demo log data from demo_logs.zip")
+        else:
+            st.error("Demo data file not found. Please upload a log file.")
     else:
         source = FileLogSource()
         # Save uploaded file temporarily
