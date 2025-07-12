@@ -1,0 +1,4 @@
+./CLAUDE.md
+./logs/*
+./target/*
+./.venv/*
