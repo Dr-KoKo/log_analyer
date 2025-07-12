@@ -2,6 +2,8 @@
 
 A sophisticated log analysis system with pluggable data sources and advanced visualization capabilities.
 
+🚀 **[Live Demo](https://your-app-name.streamlit.app)** - Try it with demo data!
+
 ## Features
 
 ### 🔌 Pluggable Architecture
@@ -23,6 +25,7 @@ A sophisticated log analysis system with pluggable data sources and advanced vis
 - **Multiple Views**: Overview, time analysis, hotspots, patterns, and raw data
 - **Real-time Updates**: Auto-refresh capability for monitoring
 - **Responsive Charts**: Pie charts, bar charts, line graphs, heatmaps, and treemaps
+- **Demo Data**: Pre-loaded sample logs for immediate exploration
 
 ## Installation
 
@@ -51,9 +54,18 @@ python advanced_analyze.py --source file --input server.log --output summary.csv
 ### Web Dashboard
 
 ```bash
-# Start the interactive dashboard
+# Start the interactive dashboard locally
 streamlit run advanced_visualize.py
 ```
+
+Or visit the [deployed app](https://your-app-name.streamlit.app) to try it online!
+
+#### Dashboard Features:
+- **Demo Data Mode**: Select "Demo Data" to explore pre-loaded error logs
+- **File Upload**: Upload your own .log or .zip files for analysis
+- **Time Filtering**: Analyze logs from specific time periods
+- **Interactive Charts**: Click, zoom, and explore data visually
+- **Export Results**: Download filtered data as CSV
 
 ## Architecture
 
@@ -91,6 +103,19 @@ Currently optimized for Apache Tomcat logs in Korean with format:
 DD-Mon-YYYY HH:MM:SS.mmm 레벨 [thread] logger message
 ```
 
+### Log Levels:
+- `정보` - Info
+- `경고` - Warning
+- `심각` - Severe/Critical
+- `디버그` - Debug
+
+### Error Format:
+```
+10-Jun-2025 08:26:46.310 심각 [thread-name] com.example.Class Error message
+nested exception is java.lang.NullPointerException: Details
+    at com.example.Class.method(File.java:123)
+```
+
 ## Extending the System
 
 To add a new data source:
@@ -111,3 +136,28 @@ class MongoDBLogSource(LogSourceInterface):
         # Query and return logs
         pass
 ```
+
+## Deployment
+
+### Streamlit Community Cloud
+
+1. Push your code to GitHub
+2. Go to [share.streamlit.io](https://share.streamlit.io)
+3. Connect your GitHub repository
+4. Deploy with one click
+
+The app includes `demo_logs.zip` for immediate exploration without requiring file uploads.
+
+### Local Deployment
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the dashboard
+streamlit run advanced_visualize.py
+```
+
+## License
+
+This project is open source and available under the MIT License.
