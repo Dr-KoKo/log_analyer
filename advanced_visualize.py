@@ -42,7 +42,7 @@ with st.sidebar:
     st.subheader("📊 Data Source")
     source_type = st.selectbox(
         "Select Log Source",
-        ["File/ZIP", "Elasticsearch (ELK)", "Demo Data"],
+        ["25-05-01 ~ 25-07-12", "File/ZIP", "Elasticsearch (ELK)"],
         help="Choose where to load logs from"
     )
     
@@ -79,16 +79,16 @@ with st.sidebar:
     refresh_interval = st.slider("Auto-refresh (seconds)", 0, 300, 0)
 
 # Main content area
-if source_type == "Demo Data" or (source_type == "File/ZIP" and uploaded_file):
+if source_type == "25-05-01 ~ 25-07-12" or (source_type == "File/ZIP" and uploaded_file):
     # Load data
-    if source_type == "Demo Data":
+    if source_type == "25-05-01 ~ 25-07-12":
         # Use default zip file if available
         import os
         default_zip_path = "demo_logs.zip"  # This file should be in your repo
         if os.path.exists(default_zip_path):
             source = FileLogSource()
             source.connect(default_zip_path)
-            st.info("📁 Using demo log data from demo_logs.zip")
+            st.info("📁 Using log data from 2025-05-01 to 2025-07-12")
         else:
             st.error("Demo data file not found. Please upload a log file.")
             st.stop()
