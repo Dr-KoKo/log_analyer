@@ -36,10 +36,20 @@ st.markdown("---")
 
 # Demo data versions configuration
 DEMO_VERSIONS = {
-    "v2.0.1 (25-05-01 ~ 25-07-12)": {
-        "file": "demo_logs.zip",
-        "date_range": "2025-05-01 to 2025-07-12",
-        "description": "Production logs with various error patterns"
+    "v2.0.0 (~ 25-05-31)": {
+        "file": "logs/2_0_0_logs.zip",
+        "date_range": "old days to 2025-05-31",
+        "description": "비아에서 작업하기 전의 기존 소스 코드"
+    },
+    "v2.0.1 (25-06-01 ~ 25-06-11)": {
+        "file": "logs/2_0_1_logs.zip",
+        "date_range": "2025-06-01 to 2025-06-11",
+        "description": "기본적인 오류 수정 및 개선 사항 적용"
+    },
+    "v2.0.2 (25-06-12 ~)": {
+        "file": "logs/2_0_2_logs.zip",
+        "date_range": "2025-06-12 to nowadays",
+        "description": "2.0.1의 오류 수정"
     },
     # Add new versions here:
     # "v2.0.2 (25-07-13 ~ 25-09-30)": {

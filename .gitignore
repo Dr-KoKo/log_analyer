@@ -1,5 +1,6 @@
 CLAUDE.md
 logs/
+!logs/*_logs.zip
 target/
 .venv/
 __pycache__/
