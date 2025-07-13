@@ -34,15 +34,34 @@ st.markdown("""
 st.title("🔍 Advanced Log Analytics Dashboard")
 st.markdown("---")
 
+# Demo data versions configuration
+DEMO_VERSIONS = {
+    "v2.0.1 (25-05-01 ~ 25-07-12)": {
+        "file": "demo_logs.zip",
+        "date_range": "2025-05-01 to 2025-07-12",
+        "description": "Production logs with various error patterns"
+    },
+    # Add new versions here:
+    # "v2.0.2 (25-07-13 ~ 25-09-30)": {
+    #     "file": "demo_logs_v2.zip",
+    #     "date_range": "2025-07-13 to 2025-09-30",
+    #     "description": "Updated logs with new error types"
+    # },
+}
+
 # Sidebar for configuration
 with st.sidebar:
     st.header("⚙️ Configuration")
     
     # Data Source Selection
     st.subheader("📊 Data Source")
+    
+    # Create source options list
+    source_options = list(DEMO_VERSIONS.keys()) + ["File/ZIP", "Elasticsearch (ELK)"]
+    
     source_type = st.selectbox(
         "Select Log Source",
-        ["25-05-01 ~ 25-07-12", "File/ZIP", "Elasticsearch (ELK)"],
+        source_options,
         help="Choose where to load logs from"
     )
     
@@ -57,6 +76,11 @@ with st.sidebar:
         elk_host = st.text_input("Host", "localhost")
         elk_port = st.number_input("Port", value=9200)
         elk_index = st.text_input("Index Pattern", "logs-*")
+    elif source_type in DEMO_VERSIONS:
+        # Show demo version info
+        demo_info = DEMO_VERSIONS[source_type]
+        st.info(f"📅 {demo_info['date_range']}")
+        st.caption(demo_info['description'])
     
     # Time Range Filter
     st.subheader("🕒 Time Range")
@@ -79,18 +103,21 @@ with st.sidebar:
     refresh_interval = st.slider("Auto-refresh (seconds)", 0, 300, 0)
 
 # Main content area
-if source_type == "25-05-01 ~ 25-07-12" or (source_type == "File/ZIP" and uploaded_file):
+if source_type in DEMO_VERSIONS or (source_type == "File/ZIP" and uploaded_file):
     # Load data
-    if source_type == "25-05-01 ~ 25-07-12":
-        # Use default zip file if available
+    if source_type in DEMO_VERSIONS:
+        # Use demo version data
         import os
-        default_zip_path = "demo_logs.zip"  # This file should be in your repo
-        if os.path.exists(default_zip_path):
+        demo_info = DEMO_VERSIONS[source_type]
+        demo_file_path = demo_info["file"]
+        
+        if os.path.exists(demo_file_path):
             source = FileLogSource()
-            source.connect(default_zip_path)
-            st.info("📁 Using log data from 2025-05-01 to 2025-07-12")
+            source.connect(demo_file_path)
+            st.info(f"📁 Using {source_type}: {demo_info['description']}")
+            st.caption(f"Date range: {demo_info['date_range']}")
         else:
-            st.error("Demo data file not found. Please upload a log file.")
+            st.error(f"Demo file '{demo_file_path}' not found. Please check your deployment.")
             st.stop()
     else:
         source = FileLogSource()
