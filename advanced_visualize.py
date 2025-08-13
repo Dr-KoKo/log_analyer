@@ -46,17 +46,21 @@ DEMO_VERSIONS = {
         "date_range": "2025-06-01 to 2025-06-11",
         "description": "기본적인 오류 수정 및 개선 사항 적용"
     },
-    "v2.0.2 (25-06-12 ~)": {
+    "v2.0.2 (25-06-12 ~ 25-08-05)": {
         "file": "logs/2_0_2_logs.zip",
-        "date_range": "2025-06-12 to nowadays",
+        "date_range": "2025-06-12 to 2025-08-05",
         "description": "2.0.1의 오류 수정"
     },
-    # Add new versions here:
-    # "v2.0.2 (25-07-13 ~ 25-09-30)": {
-    #     "file": "demo_logs_v2.zip",
-    #     "date_range": "2025-07-13 to 2025-09-30",
-    #     "description": "Updated logs with new error types"
-    # },
+    "v2.1.0 (25-08-06 ~ 25-08-11)": {
+        "file": "logs/2_1_0_logs.zip",
+        "date_range": "2025-08-06 to 2025-08-11",
+        "description": "v2.1.0의 새로운 기능 및 개선 사항 적용"
+    },
+    "v2.1.1 (25-08-12 ~ present)": {
+        "file": "logs/2_1_1_logs.zip",
+        "date_range": "2025-08-12 to present",
+        "description": "MS-SQL jdbc 드라이버 오류 수정 및 기타 개선 사항 적용"
+    },
 }
 
 # Sidebar for configuration
